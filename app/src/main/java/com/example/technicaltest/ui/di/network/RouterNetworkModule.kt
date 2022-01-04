@@ -1,6 +1,6 @@
 package com.example.technicaltest.ui.di.network
 
-import com.example.technicaltest.data.vendors.network.router.TestRouter
+import com.example.technicaltest.data.vendors.network.router.DummyRouter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,5 +12,6 @@ import retrofit2.Retrofit
 class RouterNetworkModule {
 
     @Provides
-    fun provideTestRouter(retrofit: Retrofit): TestRouter = retrofit.create(TestRouter::class.java)
+    fun provideTestRouter(retrofit: Retrofit): DummyRouter =
+        retrofit.create(DummyRouter::class.java)
 }

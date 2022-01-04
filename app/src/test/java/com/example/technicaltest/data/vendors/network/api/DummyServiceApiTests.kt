@@ -1,6 +1,6 @@
 package com.example.technicaltest.data.vendors.network.api
 
-import com.example.technicaltest.data.vendors.network.router.TestRouter
+import com.example.technicaltest.data.vendors.network.router.DummyRouter
 import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -11,21 +11,21 @@ import org.mockito.kotlin.verifyNoMoreInteractions
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class TestServiceApiTests {
-    private val mockTestRouter: TestRouter = mock()
-    private val serviceApi = TestServiceApiImpl(mockTestRouter)
+class DummyServiceApiTests {
+    private val mockDummyRouter: DummyRouter = mock()
+    private val serviceApi = DummyServiceApiImpl(mockDummyRouter)
 
     @After
     fun tearDown() {
-        verifyNoMoreInteractions(mockTestRouter)
+        verifyNoMoreInteractions(mockDummyRouter)
     }
 
     @Test
     fun testSuccess() {
-        whenever(mockTestRouter.getTest()).thenReturn(mock())
+        whenever(mockDummyRouter.getResponse()).thenReturn(mock())
 
-        serviceApi.getTest()
+        serviceApi.getEpisodes()
 
-        verify(mockTestRouter).getTest()
+        verify(mockDummyRouter).getResponse()
     }
 }    

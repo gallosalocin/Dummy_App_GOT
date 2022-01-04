@@ -1,7 +1,7 @@
 package com.example.technicaltest.ui.di.network
 
-import com.example.technicaltest.data.vendors.network.api.TestServiceApi
-import com.example.technicaltest.data.vendors.network.api.TestServiceApiImpl
+import com.example.technicaltest.data.vendors.network.api.DummyServiceApi
+import com.example.technicaltest.data.vendors.network.api.DummyServiceApiImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,5 +12,5 @@ import dagger.hilt.android.components.ActivityComponent
 abstract class ServiceApiNetworkModule {
 
     @Binds
-    abstract fun bindTestServiceApi(testServiceApi: TestServiceApiImpl): TestServiceApi
+    abstract fun bindTestServiceApi(testServiceApi: DummyServiceApiImpl): DummyServiceApi
 }

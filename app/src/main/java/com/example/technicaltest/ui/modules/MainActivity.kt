@@ -6,23 +6,21 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.technicaltest.databinding.ActivityMainBinding
-import com.example.technicaltest.presenter.models.UITestItem
+import com.example.technicaltest.presenter.models.UIEpisodeItem
 import com.example.technicaltest.presenter.modules.MainPresenter
 import com.example.technicaltest.presenter.modules.MainView
-import com.example.technicaltest.ui.modules.adapter.TestAdapter
-import com.example.technicaltest.ui.modules.adapter.TestAdapterDelegate
+import com.example.technicaltest.ui.modules.adapter.DummyAdapter
+import com.example.technicaltest.ui.modules.adapter.DummyAdapterDelegate
 import com.example.technicaltest.ui.utils.activityViewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), MainView, TestAdapterDelegate {
+class MainActivity : AppCompatActivity(), MainView, DummyAdapterDelegate {
 
-    @Inject
-    lateinit var presenter: MainPresenter
+    @Inject lateinit var presenter: MainPresenter
 
-    @Inject
-    lateinit var adapter: TestAdapter
+    @Inject lateinit var adapter: DummyAdapter
 
     private val binding by activityViewBinding(ActivityMainBinding::inflate)
 
@@ -60,8 +58,8 @@ class MainActivity : AppCompatActivity(), MainView, TestAdapterDelegate {
     }
 
     //region MainView Callbacks
-    override fun onReceiveTestItemsList(testItemsList: List<UITestItem>) {
-        adapter.submitList(testItemsList) {
+    override fun onReceiveTestItemsList(episodesList: List<UIEpisodeItem>) {
+        adapter.submitList(episodesList) {
             binding.recyclerView.scrollToPosition(0)
         }
     }
@@ -73,7 +71,7 @@ class MainActivity : AppCompatActivity(), MainView, TestAdapterDelegate {
     //endregion
 
     //region TestAdapterDelegate Callbacks
-    override fun didSelectItem(item: UITestItem) {
+    override fun didSelectItem(item: UIEpisodeItem) {
         Intent(this, MainDetailsActivity::class.java)
             .apply { putExtra(MainDetailsActivity.INTENT_TEST_ITEM_DATA, item) }
             .also { intent -> startActivity(intent) }

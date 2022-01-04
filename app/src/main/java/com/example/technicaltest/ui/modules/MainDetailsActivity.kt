@@ -3,7 +3,7 @@ package com.example.technicaltest.ui.modules
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.technicaltest.databinding.ActivityMainDetailsBinding
-import com.example.technicaltest.presenter.models.UITestItem
+import com.example.technicaltest.presenter.models.UIEpisodeItem
 import com.example.technicaltest.presenter.modules.MainDetailsPresenter
 import com.example.technicaltest.presenter.modules.MainDetailsView
 import com.example.technicaltest.ui.utils.activityViewBinding
@@ -13,16 +13,14 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainDetailsActivity : AppCompatActivity(), MainDetailsView {
 
-    @Inject
-    lateinit var presenter: MainDetailsPresenter
+    @Inject lateinit var presenter: MainDetailsPresenter
 
     private val binding by activityViewBinding(ActivityMainDetailsBinding::inflate)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val uiTestItem = intent.getParcelableExtra(INTENT_TEST_ITEM_DATA) as? UITestItem
+        val uiTestItem = intent.getParcelableExtra(INTENT_TEST_ITEM_DATA) as? UIEpisodeItem
 
         if (uiTestItem != null) {
             presenter.attach(this, lifecycle)
@@ -38,7 +36,7 @@ class MainDetailsActivity : AppCompatActivity(), MainDetailsView {
         return true
     }
 
-    private fun setupUI(uiTestItem: UITestItem) {
+    private fun setupUI(uiEpisodeItem: UIEpisodeItem) {
         with(binding) {
             setSupportActionBar(toolbar)
             supportActionBar?.run {
@@ -47,8 +45,7 @@ class MainDetailsActivity : AppCompatActivity(), MainDetailsView {
                 setDisplayShowTitleEnabled(false)
             }
 
-            firstTextView.text = uiTestItem.id.toString()
-            secondTextView.text = uiTestItem.body
+            episodeTextView.text = uiEpisodeItem.name
         }
     }
 

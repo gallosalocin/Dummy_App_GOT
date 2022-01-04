@@ -1,24 +1,19 @@
 package com.example.technicaltest.presenter.modules
 
-import com.example.technicaltest.presenter.protocols.DisposablePresenter
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import com.example.technicaltest.presenter.utlis.NetworkSchedulers
+import com.example.technicaltest.presenter.protocols.Presenter
 import javax.inject.Inject
 
 interface MainDetailsView {
 
 }
 
-interface MainDetailsPresenter : DisposablePresenter<MainDetailsView> {
+interface MainDetailsPresenter : Presenter<MainDetailsView> {
     fun setup()
 }
 
-class MainDetailsPresenterImpl @Inject constructor(
-    private val networkSchedulers: NetworkSchedulers
-) : MainDetailsPresenter {
+class MainDetailsPresenterImpl @Inject constructor() : MainDetailsPresenter {
 
     override var attachedUnsafeView: MainDetailsView? = null
-    override val disposeBag = CompositeDisposable()
 
     override fun setup() {
     }

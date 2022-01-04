@@ -14,35 +14,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        app:title="Item Details"
-        app:titleCentered="true" />
+        app:navigationIcon="@drawable/ic_arrow_back" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/firstTextView"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:layout_height="263dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:text="@sample/testItems.json/data/id" />
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/secondTextView"
+        android:id="@+id/episodeTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginTop="24dp"
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/firstTextView"
-        tools:text="@sample/testItems.json/data/body" />
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        tools:text="@sample/episodeItems.json/episodes/name" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/timeTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="24dp"
+        android:text="durée"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/episodeTextView"
+        app:textAllCaps="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
