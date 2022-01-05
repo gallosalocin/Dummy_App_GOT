@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Technical Test</string>
     <string name="season_number">%1$s - %2$s</string>
+    <string name="runtime">durée</string>
+    <string name="airtime">à</string>
+    <string name="airdate">paru le</string>
+    <string name="url">url</string>
 </resources>

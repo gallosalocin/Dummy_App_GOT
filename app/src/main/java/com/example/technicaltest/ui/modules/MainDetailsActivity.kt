@@ -1,7 +1,10 @@
 package com.example.technicaltest.ui.modules
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import coil.load
 import com.example.technicaltest.databinding.ActivityMainDetailsBinding
 import com.example.technicaltest.presenter.models.UIEpisodeItem
 import com.example.technicaltest.presenter.modules.MainDetailsPresenter
@@ -45,7 +48,27 @@ class MainDetailsActivity : AppCompatActivity(), MainDetailsView {
                 setDisplayShowTitleEnabled(false)
             }
 
+            imageView.load(uiEpisodeItem.originalImage)
             episodeTextView.text = uiEpisodeItem.name
+            runtimeTextView.text = uiEpisodeItem.runtime.toString()
+            airdateTextView.text = uiEpisodeItem.airdate
+            airtimeTextView.text = uiEpisodeItem.airtime
+            summaryTextView.text = uiEpisodeItem.summary
+
+            toolbarShareActionButton.setOnClickListener {
+                Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, uiEpisodeItem.url)
+                    type = "text/plain"
+                    startActivity(Intent.createChooser(this, null))
+                }
+            }
+
+            urlButton.setOnClickListener {
+                val defaultBrowser = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER)
+                defaultBrowser.data = Uri.parse(uiEpisodeItem.url)
+                startActivity(defaultBrowser)
+            }
         }
     }
 

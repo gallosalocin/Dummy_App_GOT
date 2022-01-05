@@ -11,9 +11,11 @@ data class EpisodeResponse(
     val season: Int,
     val number: Int,
     val airdate: String,
+    val airtime: String,
+    val runtime: Int,
     val image: ImageResponse,
     val summary: String
 ) : DomainModelConvertible<DomainEpisode> {
     override fun toDomain(): DomainEpisode =
-        DomainEpisode(url, name, season, number, airdate, image.medium, image.original, summary)
+        DomainEpisode(url, name, season, number, airdate, airtime, runtime, image.medium, image.original, summary)
 }

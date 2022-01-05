@@ -10,6 +10,8 @@ data class UIEpisodeItem(
     val season: Int,
     val number: Int,
     val airdate: String,
+    val airtime: String,
+    val runtime: Int,
     val mediumImage: String,
     val originalImage: String,
     val summary: String

@@ -5,9 +5,10 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_arrow_back.xml" value="0.259375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23981481481481481" />
-        <entry key="app/src/main/res/layout/activity_main_details.xml" value="0.23981481481481481" />
+        <entry key="app/src/main/res/layout/activity_main_details.xml" value="0.33" />
         <entry key="app/src/main/res/layout/view_holder_big_item.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/view_holder_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/view_holder_small_item.xml" value="0.13796296296296295" />
       </map>
     </option>
   </component>

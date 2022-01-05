@@ -15,8 +15,7 @@ class BigCellViewHolder(
     fun onBind(uiEpisodeItem: UIEpisodeItem, delegate: DummyAdapterDelegate?) {
         with(binding) {
 
-            imageView.load(uiEpisodeItem.mediumImage) {
-                transformations(CircleCropTransformation())
+            imageView.load(uiEpisodeItem.originalImage) {
                 error(R.drawable.ic_no_image)
             }
 
