@@ -1,5 +1,9 @@
 package com.example.technicaltest.domain.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class DomainEpisode(
     val url: String,
     val name: String,
@@ -10,5 +14,5 @@ data class DomainEpisode(
     val runtime: Int,
     val mediumImage: String,
     val originalImage: String,
-    val summary: String
-)
+    val summary: String,
+) : Parcelable

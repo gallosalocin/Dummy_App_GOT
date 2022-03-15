@@ -8,7 +8,7 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
-    tools:context=".ui.modules.viewHolder.BigCellViewHolder">
+    tools:context=".presentation.ui.episodesListing.adapter.viewHolder.BigCellViewHolder">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
@@ -35,6 +35,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="?selectableItemBackground"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textview.MaterialTextView

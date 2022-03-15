@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".ui.modules.Application"
+        android:name="com.example.technicaltest.Application"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TechnicalTest">
         <activity
-            android:name=".ui.modules.MainActivity"
+            android:name="com.example.technicaltest.presentation.ui.episodesListing.EpisodesListingActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             tools:ignore="LockedOrientationActivity">
@@ -28,7 +28,7 @@
         </activity>
 
         <activity
-            android:name=".ui.modules.MainDetailsActivity"
+            android:name="com.example.technicaltest.presentation.ui.episodeDetails.EpisodeDetailsActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
     </application>
