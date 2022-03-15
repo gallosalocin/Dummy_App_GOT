@@ -6,4 +6,6 @@ import io.reactivex.rxjava3.core.Single
 interface DummyServiceApi {
 
     fun getEpisodes(): Single<GlobalResponse>
+
+    suspend fun getCoroutinesEpisodes(): GlobalResponse
 }

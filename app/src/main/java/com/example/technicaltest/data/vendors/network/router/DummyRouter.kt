@@ -8,4 +8,7 @@ interface DummyRouter {
 
     @GET("/got.json")
     fun getResponse(): Call<GlobalResponse>
+
+    @GET("/got.json")
+    suspend fun getCoroutinesResponse(): GlobalResponse
 }

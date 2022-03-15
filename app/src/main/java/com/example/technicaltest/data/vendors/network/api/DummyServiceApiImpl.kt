@@ -10,5 +10,9 @@ class DummyServiceApiImpl @Inject constructor(
     private val dummyRouter: DummyRouter
 ) : DummyServiceApi, RxServiceApi {
 
-    override fun getEpisodes(): Single<GlobalResponse> = createSingle(dummyRouter.getResponse())
+    override fun getEpisodes(): Single<GlobalResponse> =
+        createSingle(dummyRouter.getResponse())
+
+    override suspend fun getCoroutinesEpisodes(): GlobalResponse =
+        dummyRouter.getCoroutinesResponse()
 }

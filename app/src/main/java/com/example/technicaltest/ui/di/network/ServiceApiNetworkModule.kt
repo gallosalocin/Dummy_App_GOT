@@ -12,5 +12,5 @@ import dagger.hilt.android.components.ActivityComponent
 abstract class ServiceApiNetworkModule {
 
     @Binds
-    abstract fun bindTestServiceApi(testServiceApi: DummyServiceApiImpl): DummyServiceApi
+    abstract fun bindDummyServiceApi(dummyServiceApi: DummyServiceApiImpl): DummyServiceApi
 }

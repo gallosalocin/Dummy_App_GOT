@@ -64,8 +64,8 @@ class MainActivity : AppCompatActivity(), MainView, DummyAdapterDelegate {
         }
     }
 
-    override fun onReceiveError() {
-        Toast.makeText(this, "An error occurred", Toast.LENGTH_SHORT).show()
+    override fun onReceiveError(error: String) {
+        Toast.makeText(this, "An error occurred: $error", Toast.LENGTH_SHORT).show()
     }
     //endregion
 

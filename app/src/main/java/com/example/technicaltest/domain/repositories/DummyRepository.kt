@@ -6,4 +6,6 @@ import io.reactivex.rxjava3.core.Single
 interface DummyRepository {
 
     fun getEpisodes(): Single<List<DomainEpisode>>
+
+    suspend fun getCoroutinesEpisodes(): List<DomainEpisode>
 }
