@@ -1,10 +1,9 @@
 package com.example.technicaltest.presentation.ui.episodesListing
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.technicaltest.R
@@ -17,7 +16,6 @@ import com.example.technicaltest.presentation.ui.utils.activityViewBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
@@ -57,8 +55,6 @@ class EpisodesListingActivity : AppCompatActivity(), AdapterDelegate {
                     is EpisodesListingState.Success -> {
                         adapter.submitList(state.list)
                         binding.motionLayout.transitionToState(R.id.success)
-//                        delay(1_000)
-//                        binding.motionLayout.transitionToState(R.id.successWithoutToolbar)
                     }
                     is EpisodesListingState.Error -> {
                         Snackbar.make(binding.root, state.errorMessage, Snackbar.LENGTH_SHORT).show()

@@ -18,29 +18,23 @@
         android:layout_height="76dp"
         android:layout_marginVertical="15dp"
         android:layout_marginStart="20dp"
-        android:scaleType="centerCrop"
+        android:background="#dddddd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@mipmap/ic_launcher_round" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/seasonTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginEnd="10dp"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
+        android:background="#dddddd"
         android:textSize="11sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/episodeTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:textAllCaps="true"
-        tools:text="@sample/episodeItems.json/episodes/season" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/episodeTextView"
@@ -48,17 +42,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="10dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
+        android:background="#dddddd"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageView"
-        app:layout_constraintTop_toBottomOf="@id/seasonTextView"
-        tools:text="@sample/episodeItems.json/episodes/name" />
+        app:layout_constraintTop_toBottomOf="@id/seasonTextView" />
 
     <View
         android:layout_width="0dp"
