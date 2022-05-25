@@ -8,7 +8,7 @@ import androidx.core.text.HtmlCompat
 import coil.load
 import com.example.technicaltest.databinding.ActivityEpisodeDetailsBinding
 import com.example.technicaltest.domain.models.DomainEpisode
-import com.example.technicaltest.presentation.ui.utils.activityViewBinding
+import com.example.technicaltest.utils.activityViewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

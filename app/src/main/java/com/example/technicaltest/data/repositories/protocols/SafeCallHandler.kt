@@ -1,7 +1,12 @@
 package com.example.technicaltest.data.repositories.protocols
 
+import com.example.technicaltest.data.remote.models.dto.error.ErrorDto
+import com.example.technicaltest.domain.models.DomainError
 import com.example.technicaltest.utils.ResultHandler
+import com.squareup.moshi.Moshi
 import java.io.IOException
+import java.net.HttpURLConnection
+import okhttp3.ResponseBody
 import retrofit2.HttpException
 
 interface SafeCallHandler {
@@ -12,21 +17,34 @@ interface SafeCallHandler {
             if (response != null) {
                 ResultHandler.Success(data = response)
             } else {
-                ResultHandler.Error(errorMessage = "Invalid data")
+                val errorResponse: DomainError? = convertErrorBody(response)
+                ResultHandler.Error(errorMessage = "Invalid data", data = errorResponse)
             }
-        } catch (e: HttpException) {
-            e.printStackTrace()
-            when(e.code()) {
-                400 -> ResultHandler.Error(errorMessage = "${e.code()} - Bad request")
-                401 -> ResultHandler.Error(errorMessage = "${e.code()} - Unauthorized")
-                403 -> ResultHandler.Error(errorMessage = "${e.code()} - Forbidden")
-                404 -> ResultHandler.Error(errorMessage = "${e.code()} - Not Found")
-                500, 502, 503 -> ResultHandler.Error(errorMessage = "${e.code()} - Internal Server Error")
-                504 -> ResultHandler.Error(errorMessage = "${e.code()} - Gateway Time-out")
-                else -> ResultHandler.Error(errorMessage = e.message ?: "Something went wrong")
+        } catch (exception: HttpException) {
+            exception.printStackTrace()
+            when (exception.code()) {
+                HttpURLConnection.HTTP_BAD_REQUEST -> ResultHandler.Error(errorMessage = "${exception.code()} - Bad Request")
+                HttpURLConnection.HTTP_UNAUTHORIZED -> ResultHandler.Error(errorMessage = "${exception.code()} - Unauthorized")
+                HttpURLConnection.HTTP_FORBIDDEN -> ResultHandler.Error(errorMessage = "${exception.code()} - Forbidden")
+                HttpURLConnection.HTTP_NOT_FOUND -> ResultHandler.Error(errorMessage = "${exception.code()} - Not Found")
+                HttpURLConnection.HTTP_CONFLICT -> ResultHandler.Error(errorMessage = "${exception.code()} - Conflict")
+                HttpURLConnection.HTTP_BAD_GATEWAY, HttpURLConnection.HTTP_INTERNAL_ERROR -> ResultHandler.Error(errorMessage = "${exception.code()} - Internal Server Error")
+                HttpURLConnection.HTTP_GATEWAY_TIMEOUT -> ResultHandler.Error(errorMessage = "${exception.code()} - Gateway Time-out")
+                else -> ResultHandler.Error(errorMessage = exception.message ?: "Something went wrong")
             }
-        } catch (e: IOException) {
-            e.printStackTrace()
+        } catch (exception: IOException) {
+            exception.printStackTrace()
             ResultHandler.Error(errorMessage = "Please check your network connection")
         }
+
+    private fun convertErrorBody(errorBody: ResponseBody?): DomainError? =
+        try {
+            errorBody?.source()?.let {
+                val moshiAdapter = Moshi.Builder().build().adapter(ErrorDto::class.java)
+                moshiAdapter.fromJson(it)?.toDomain()
+            }
+        } catch (exception: Exception) {
+            null
+        }
+
 }

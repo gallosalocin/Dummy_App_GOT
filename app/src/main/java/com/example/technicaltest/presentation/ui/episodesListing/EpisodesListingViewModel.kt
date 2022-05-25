@@ -6,7 +6,6 @@ import com.example.technicaltest.domain.useCases.GetEpisodesListingUseCase
 import com.example.technicaltest.utils.ResultHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -26,20 +25,19 @@ class EpisodesListingViewModel @Inject constructor(
 
     private fun getEpisodesListing() {
         viewModelScope.launch {
-            delay(1000)
             when (val result = getEpisodesListing.invoke()) {
                 is ResultHandler.Success -> {
                     _viewState.update {
                         if (result.data != null) {
                             EpisodesListingState.Success(result.data)
                         } else {
-                            EpisodesListingState.Error("liste vide")
+                            EpisodesListingState.Error(domainError = result.data, errorMessage = "Error")
                         }
                     }
                 }
                 is ResultHandler.Error -> {
                     _viewState.update {
-                        EpisodesListingState.Error(result.errorMessage)
+                        EpisodesListingState.Error("result.errorMessage")
                     }
                 }
             }

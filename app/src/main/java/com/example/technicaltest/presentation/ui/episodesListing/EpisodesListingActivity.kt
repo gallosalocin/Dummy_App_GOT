@@ -12,7 +12,7 @@ import com.example.technicaltest.domain.models.DomainEpisode
 import com.example.technicaltest.presentation.ui.episodeDetails.EpisodeDetailsActivity
 import com.example.technicaltest.presentation.ui.episodesListing.adapter.Adapter
 import com.example.technicaltest.presentation.ui.episodesListing.adapter.AdapterDelegate
-import com.example.technicaltest.presentation.ui.utils.activityViewBinding
+import com.example.technicaltest.utils.activityViewBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

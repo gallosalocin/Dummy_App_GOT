@@ -1,4 +1,4 @@
-package com.example.technicaltest.presentation.ui.utils
+package com.example.technicaltest.utils
 
 import android.os.Looper
 import android.view.LayoutInflater

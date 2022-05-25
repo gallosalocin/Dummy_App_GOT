@@ -2,9 +2,9 @@ package com.example.technicaltest.data.repositories
 
 import com.example.technicaltest.data.remote.api.ServiceApi
 import com.example.technicaltest.data.repositories.protocols.SafeCallHandler
-import com.example.technicaltest.utils.ResultHandler
 import com.example.technicaltest.domain.models.DomainEpisode
 import com.example.technicaltest.domain.repositories.MainRepository
+import com.example.technicaltest.utils.ResultHandler
 import javax.inject.Inject
 
 class MainRepositoryImpl @Inject constructor(
